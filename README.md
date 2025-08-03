@@ -53,3 +53,9 @@ noticed that data for the given name is already available under a different user
 Most well-made plugins, including LuckPerms, can handle this properly, as this scenario can actually occur naturally
 when two players swap usernames.
 If you're still concerned or annoyed by the warning, you can configure a username transformer.
+
+## Secure profiles
+
+When having secure profiles enabled, sending chat messages when a staff profile is active will not work.
+This can't be fixed because the plugin is essentially impersonating another account for which the client does not have
+the cryptographic keys.
