@@ -1,0 +1,10 @@
+name: staffprofiles
+author: mcmdev
+version: ${version}
+api-version: 1.21
+main: de.mcmdev.staffprofiles.StaffprofilesPaper
+dependencies:
+  server:
+    LuckPerms:
+      load: BEFORE
+      required: true

@@ -1,0 +1,6 @@
+{
+  "hostRegex": ".*staff.*",
+  "permission": "staffprofile",
+  "uuidTransformer": "^([a-f\\d-]{18})([a-f\\d-]{18})/$1-0000-000000000000",
+  "usernameTransformer": "/"
+}
