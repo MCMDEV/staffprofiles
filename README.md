@@ -35,3 +35,21 @@ new UUID. \
 **usernameTransformer**: Specifies the transformation of player username into staff profile username using a regex pattern.
 The format is "pattern/replacement" where a pattern matches parts of the original username and replacement defines
 how to construct the new username.
+
+## Additional notes
+
+### LuckPerms warnings
+
+When using this plugin, LuckPerms will send print warning messages such as these info the server log:
+```
+[LuckPerms] LuckPerms already has data for player 'MCMDEV' - but this data is stored under a different UUID.
+[LuckPerms] 'MCMDEV' has previously used the unique ids [2fbe3e3e-50c3-482c-872b-28386fd91704] but is now connecting with '00000000-7777-0000-872b-28386fd91704'
+[LuckPerms] The UUID the player is connecting with now is NOT Mojang-assigned (type 0). This implies that THIS server is not authenticating correctly, but one (or more) of the other servers/proxies in the network are.
+[LuckPerms] If you're using BungeeCord/Velocity, please ensure that IP-Forwarding is setup correctly on all of your backend servers!
+[17:09:39 WARN]: [LuckPerms] See here for more info: https://luckperms.net/wiki/Network-Installation#pre-setup
+```
+These warnings can be safely ignored if you have a secure setup. As the warning states, LuckPerms
+noticed that data for the given name is already available under a different username, which is precisely what this plugin does.
+Most well-made plugins, including LuckPerms, can handle this properly, as this scenario can actually occur naturally
+when two players swap usernames.
+If you're still concerned or annoyed by the warning, you can configure a username transformer.
