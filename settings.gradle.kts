@@ -6,3 +6,4 @@ plugins {
 
 include("staffprofiles-common")
 include("staffprofiles-paper")
+include("staffprofiles-velocity")
