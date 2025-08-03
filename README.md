@@ -26,12 +26,12 @@ means that the plugin configuration file cannot contain any comments.
 
 Please see the reference below to learn about available configuration options:
 
-hostRegex: A regular expression pattern that determines if a hostname should be treated as a staff hostname by matching
-against the entire address
-permission: The permission the player must have to be allowed to join using a staff hostname
-uuidTransformer: Specifies the transformation of player UUIDs into staff profile UUIDs using a regex pattern. The format
+**hostRegex**: A regular expression pattern that determines if a hostname should be treated as a staff hostname by matching
+against the entire address \
+**permission**: The permission the player must have to be allowed to join using a staff hostname \
+**uuidTransformer**: Specifies the transformation of player UUIDs into staff profile UUIDs using a regex pattern. The format
 is "pattern/replacement" where a pattern matches parts of the original UUID and replacement defines how to construct the
-new UUID.
-usernameTransformer: Specifies the transformation of player username into staff profile username using a regex pattern.
+new UUID. \
+**usernameTransformer**: Specifies the transformation of player username into staff profile username using a regex pattern.
 The format is "pattern/replacement" where a pattern matches parts of the original username and replacement defines
 how to construct the new username.
