@@ -2,6 +2,8 @@ name: staffprofiles
 author: mcmdev
 version: ${version}
 api-version: 1.21
+description: Assigns staff members a different game profile if they are joining using a specific hostname.
+website: https://github.com/MCMDEV/staffprofiles
 main: de.mcmdev.staffprofiles.StaffprofilesPaper
 dependencies:
   server:
