@@ -9,7 +9,7 @@ repositories {
 dependencies {
     // Gson is already included in the Vanilla server and thus in all platforms,
     // making it the obvious choice for config file serialization.
-    compileOnly("com.google.code.gson:gson:2.7")
+    compileOnly("com.google.code.gson:gson:2.8.9")
 
     // LuckPerms is used by the LuckPermsPermissionProvider
     compileOnly("net.luckperms:api:5.4")
