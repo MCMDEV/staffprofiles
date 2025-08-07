@@ -22,6 +22,9 @@ tasks {
     jar {
         enabled = false
     }
+    shadowJar {
+        archiveClassifier.set("")
+    }
     build {
         dependsOn(shadowJar)
     }
