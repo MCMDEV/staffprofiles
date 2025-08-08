@@ -20,11 +20,15 @@ package de.mcmdev.staffprofiles;
 
 import de.mcmdev.staffprofiles.permission.PermissionProvider;
 import org.jetbrains.annotations.Blocking;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.file.Path;
 import java.util.UUID;
 
-public final class Staffprofiles {
+final class Staffprofiles {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Staffprofiles.class);
 
     private final ConfigurationData configurationData;
     private final PermissionProvider permissionProvider;
@@ -47,6 +51,7 @@ public final class Staffprofiles {
             }
         } catch (Exception e) {
             // If the hostname isn't matched yet, we should assume it's not the staff hostname and let the player in.
+            LOGGER.warn("Failed to load login response from staffprofiles.", e);
             return LoginResponse.ignore();
         }
 
@@ -58,9 +63,10 @@ public final class Staffprofiles {
             UUID newUUID = transformUUID(loginRequest.uuid());
             String newUsername = transformUsername(loginRequest.username());
 
+            LOGGER.info("User {} ({}) has logged in as {} ({})", loginRequest.username(), loginRequest.uuid(), newUsername, newUUID);
             return LoginResponse.allow(newUUID, newUsername);
         } catch (Exception e) {
-            // If the hostname is matched to the staff hostname, we can safely deny entry.
+            LOGGER.warn("Failed to load login response from staffprofiles.", e);
             return LoginResponse.fail();
         }
     }

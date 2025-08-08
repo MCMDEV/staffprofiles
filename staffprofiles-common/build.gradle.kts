@@ -16,6 +16,9 @@ dependencies {
 
     // Provides the @Blocking annotation
     compileOnly("org.jetbrains:annotations:26.0.2")
+
+    // Logging interface
+    compileOnly("org.slf4j:slf4j-api:2.0.17")
 }
 
 tasks {

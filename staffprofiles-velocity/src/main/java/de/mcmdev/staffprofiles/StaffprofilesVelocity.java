@@ -32,6 +32,7 @@ import de.mcmdev.staffprofiles.permission.LuckPermsPermissionProvider;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.file.Path;
 import java.util.Optional;
@@ -48,16 +49,16 @@ import java.util.Optional;
 )
 public class StaffprofilesVelocity {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(StaffprofilesVelocity.class);
+
     private final ProxyServer proxyServer;
-    private final Logger logger;
     private final Path dataDirectory;
 
     private Staffprofiles staffprofiles;
 
     @Inject
-    public StaffprofilesVelocity(ProxyServer proxyServer, Logger logger, @DataDirectory Path dataDirectory) {
+    public StaffprofilesVelocity(ProxyServer proxyServer, @DataDirectory Path dataDirectory) {
         this.proxyServer = proxyServer;
-        this.logger = logger;
         this.dataDirectory = dataDirectory;
     }
 
@@ -66,7 +67,7 @@ public class StaffprofilesVelocity {
         try {
             staffprofiles = Staffprofiles.create(dataDirectory, new LuckPermsPermissionProvider());
         } catch (Exception e) {
-            logger.error("An error occurred while enabling staffprofiles plugin", e);
+            LOGGER.error("An error occurred while enabling staffprofiles plugin", e);
             return;
         }
 
@@ -88,7 +89,6 @@ public class StaffprofilesVelocity {
 
             if (loginResponse.type() != LoginResponse.Type.DENY) return;
 
-            assert loginResponse.reason() != null;
             event.setResult(PreLoginEvent.PreLoginComponentResult.denied(Component.text(loginResponse.reason())));
         });
     }

@@ -26,7 +26,7 @@ import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 import java.util.regex.Pattern;
 
-class PatternDeserializer implements JsonDeserializer<Pattern> {
+final class PatternDeserializer implements JsonDeserializer<Pattern> {
     @Override
     public Pattern deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         try {

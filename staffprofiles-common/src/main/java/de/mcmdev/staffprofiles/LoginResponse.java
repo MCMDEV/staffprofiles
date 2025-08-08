@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
-public class LoginResponse {
+final class LoginResponse {
 
     private static final String DENY_REASON = "You are not allowed to join using this hostname.";
     private static final String FAIL_REASON = "An error occurred during login. Please contact the server administrator.";

@@ -25,8 +25,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 final class LoginListener implements Listener {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginListener.class);
 
     private final Staffprofiles staffprofiles;
 
@@ -39,6 +43,7 @@ final class LoginListener implements Listener {
         PlayerProfile playerProfile = event.getPlayerProfile();
         if (playerProfile.getId() == null || playerProfile.getName() == null) {
             // Strange profile, we should ignore it.
+            LOGGER.warn("Invalid profile detected during login, ignoring");
             return;
         }
 
@@ -53,7 +58,6 @@ final class LoginListener implements Listener {
             case IGNORE -> {
             }
             case DENY -> {
-                assert loginResponse.reason() != null;
                 event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, Component.text(loginResponse.reason()));
             }
             case ALLOW -> {

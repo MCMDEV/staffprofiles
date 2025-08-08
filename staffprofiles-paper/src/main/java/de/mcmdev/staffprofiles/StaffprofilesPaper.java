@@ -21,8 +21,12 @@ package de.mcmdev.staffprofiles;
 import de.mcmdev.staffprofiles.permission.LuckPermsPermissionProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StaffprofilesPaper extends JavaPlugin {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(StaffprofilesPaper.class);
 
     @Override
     public void onEnable() {
@@ -30,7 +34,7 @@ public class StaffprofilesPaper extends JavaPlugin {
             Staffprofiles staffprofiles = Staffprofiles.create(getDataPath(), new LuckPermsPermissionProvider());
             Bukkit.getPluginManager().registerEvents(new LoginListener(staffprofiles), this);
         } catch (Exception e) {
-            getSLF4JLogger().error("An error occurred while enabling staffprofiles plugin", e);
+            LOGGER.error("An error occurred while enabling staffprofiles plugin", e);
             Bukkit.getPluginManager().disablePlugin(this);
         }
     }
